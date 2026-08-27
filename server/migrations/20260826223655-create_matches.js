@@ -40,16 +40,16 @@ module.exports = {
         type: Sequelize.ENUM('none','amount_mismatch', 'missing_internal','missing_bank','duplicate'),
         defaultValue: 'none'
       },
-      matchedAt: {
+      matched_at: {
         type: Sequelize.DATE,
         allowNull: true
       },
-      createdAt: {
+      created_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW
       },
-      updatedAt: {
+      updated_at: {
         allowNull: false,
         type: Sequelize.DATE,
         defaultValue: Sequelize.NOW

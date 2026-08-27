@@ -11,6 +11,9 @@ app.get('/health', (req, res) => {
   res.json({ status: 'ok' });
 });
 
+const uploadRoutes = require('./routes/upload');
+app.use('/upload', uploadRoutes);
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });

@@ -1,4 +1,4 @@
 reference_number, amount_cents, transaction_date, description
-TXN001,15000,2026-08-01,Vendor payment - Acme Corp
-TXN002,7500,2026-08-02,Office supplies
-TXN003,250000,2026-08-03,Client invoice payment
+TXN001,15000,2026-08-01, Vendor payment - Acme Corp
+TXN002,7500,2026-08-02, Office supplies
+TXN003,250000,2026-08-03, Client invoice payment
