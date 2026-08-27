@@ -23,7 +23,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
-          model: 'bank_transaction',
+          model: 'bank_transactions',
           key: 'id'
         },
         onDelete: 'SET NULL'
