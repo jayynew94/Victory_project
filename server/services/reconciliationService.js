@@ -26,7 +26,7 @@ async function runReconciliation() {
                 match_type: 'exact',
                 confidence_score: 1.0,
                 discrepancy_type: 'none',
-                match_at: new Date()
+                matched_at: new Date()
             });
         internal.status = 'matched';
         bankMatch.status = 'matched';
