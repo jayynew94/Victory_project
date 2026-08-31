@@ -1,12 +1,13 @@
 const express = require('express');
-const { runReconciliation } = require('../services/reconciliationService');
+const { runReconciliation, runFuzzyMatch } = require('../services/reconciliationService');
 
 const router = express.Router();
 
 router.post('/run', async (req, res) =>{
     try{
-        const result = await runReconciliation();
-        res.json(result);
+        const exactResult = await runReconciliation();
+        const fuzzyResult = await runFuzzyMatch();
+        res.json({...exactResult, ...fuzzyResult});
     } catch(err) {
         res.status(500).json({ error: err.message });
     }
