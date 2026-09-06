@@ -56,9 +56,9 @@ services/ # Matching/reconciliation logic
 
 - [x] Schema + Sequelize models
 - [x] CSV ingestion endpoint
-- [x] Exact-match engine
-- [x] Fuzzy-match engine
-- [x] Discrepancy classification
+- [ ] Exact-match engine
+- [ ] Fuzzy-match engine
+- [ ] Discrepancy classification
 - [ ] React dashboard
 - [ ] Tests
 - [ ] Deployment
