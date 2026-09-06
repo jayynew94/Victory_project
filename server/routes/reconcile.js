@@ -38,6 +38,11 @@ router.post('/manual-match', async (req, res) =>{
         { status: 'matched'},
         { where: { id: internal_transaction_id } }
       );
+
+      await db.BankTransaction.update(
+        { status: 'matched' },
+        { where: { id: bank_transaction_id } }
+      );
       
       res.json({ success: true, match });
     } catch (err) {
