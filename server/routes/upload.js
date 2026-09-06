@@ -24,6 +24,8 @@ router.post('/internal', upload.single('file'), async(req, res) =>{
       })
       .on('end', async () => {
         try{
+          // bulkCreate does a single insert operation instead of
+          // one query per row - much faster for larger CSV files
             const created = await db.InternalTransaction.bulkCreate(results);
             fs.unlinkSync(req.file.path);
             res.json({ inserted: created.length });
@@ -37,6 +39,9 @@ router.post('/bank', upload.single('file'), async(req, res) =>{
   const results = [];
   fs.createReadStream(req.file.path)
     .pipe(csv({
+      // Trims whitespace from CSV headers so file with 
+      // "amount_cents" vs " amount_cents" doesnt silently
+      // break field lookups (row.amount_cents would be undefined)
       mapHeaders: ({ header }) => header.trim()
     }))
     .on('data', (row) => {

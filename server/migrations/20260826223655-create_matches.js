@@ -3,6 +3,9 @@
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
   async up (queryInterface, Sequelize) {
+    // internal_transaction_id and bank_transaction_id are both nullable
+    // becuase a "match" row can also represent a discrepancy. example: a bank
+    // transaction with no internal counterpart (internal_transaction_id = null)
     await queryInterface.createTable('matches', {
       id:{
         allowNull: false,
@@ -23,9 +26,9 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: true,
         references: {
-          model: 'bank_transactions',
-          key: 'id'
-        },
+          model: 'bank_transactions', // must be plural - matches actual table name;
+          key: 'id'                   // a singular typo here previously corrupted
+        },                            // the FK contraint after a rename migration
         onDelete: 'SET NULL'
       },
       match_type:{

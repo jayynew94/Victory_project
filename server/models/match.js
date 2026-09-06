@@ -5,6 +5,9 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
     class Match extends Model {
         static associate(models){
+            //Match holds both foreign keys, so it's the "belongsTo" side
+            //of both relationships. InternalTransaction/BankTransaction
+            //use "hasMany" on the other end.
             Match.belongsTo(models.InternalTransaction,{
                 foreignKey: 'internal_transaction_id'
             });
