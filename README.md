@@ -11,7 +11,7 @@ Reconciliation is a core, unglamorous problem in banking: two systems record the
 
 ## Status
 
-🚧 In progress — currently building out the data model and ingestion layer.
+🚧 In progress — currently building out the front end using react
 
 ## Planned Features
 
