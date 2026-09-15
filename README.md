@@ -62,3 +62,9 @@ services/ # Matching/reconciliation logic
 - [ ] React dashboard
 - [ ] Tests
 - [ ] Deployment
+
+
+## Known Limitations / Future Improvements
+
+- Manual match overrides are trusted completely — there's no validation that the two transactions actually correspond, and no record of who performed the override or why. A production version would log the reviewer's identity and require a reason/note for the audit trail.
+- Resolving one side of a discrepancy (e.g., manually matching a `missing_bank` record) doesn't clean up a related discrepancy record on the other side if one exists for the same transaction, which can leave a stale discrepancy row behind.
