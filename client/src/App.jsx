@@ -1,9 +1,10 @@
 import { useSelector } from 'react-redux'
 import UploadForm from './components/UploadForm'
 import './App.css';
+import ReconcileButton from './components/ReconcileButton';
 
 function App(){
-  const { uploadResult, error, loading } = useSelector((state) => state.transactions);
+  const { uploadResult,reconcileResult, error, loading } = useSelector((state) => state.transactions);
 
   return (
     <div>
@@ -17,8 +18,22 @@ function App(){
           Success! Insterted {uploadResult.inserted} transactions
         </p>
       )}
+
+      <ReconcileButton />
+
+      {reconcileResult && (
+        <div>
+          <h3>Reconciliation Results</h3>
+          <ul>
+            <li>Exact matches: {reconcileResult.exactMatches}</li>
+            <li>Fuzzy matches: {reconcileResult.fuzzyMatches}</li>
+            <li>Missing from bank:{reconcileResult.missingBank}</li>
+            <li>Missing from internal: {reconcileResult.missingInternal}</li>
+          </ul>
+        </div>
+      )}
     </div>
   );
 }
 
-export default App
+export default App;
